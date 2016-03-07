@@ -1,1 +1,122 @@
 /* Empty. Add your own CSS if you like */
+
+.mainHome{
+  margin-left: 11px;
+}
+.categoryImage{
+  background: rgba(0, 0, 0, 0) url("../img/home.png") no-repeat scroll -12px -3px;
+  display: inline-block;
+  height: 45px;
+  margin-top: 10px;
+  width: 53px;
+
+}
+
+.categoryImage1{
+  background: rgba(0, 0, 0, 0) url("../img/home.png") no-repeat scroll 0 0;
+  display: inline-block;
+  height: 45px;
+  margin-top: 10px;
+  width: 53px;
+    background-position:-74px -3px;
+}
+
+
+.categoryImage2{
+  background:rgba(0, 0, 0, 0) url("../img/bikes.png") no-repeat scroll ;
+    display: inline-block;
+    height: 45px;
+    margin-top: 10px;
+    width: 53px;
+    background-position:-4px -6px;
+}
+
+.categoryImage3{
+  background:rgba(0, 0, 0, 0) url("../img/home.png") no-repeat scroll ;
+  display: inline-block;
+  height: 45px;
+  margin-top: 10px;
+  width: 53px;
+  background-position:-147px -6px;
+}
+
+.categoryImage4{
+  background:rgba(0, 0, 0, 0) url("../img/home.png") no-repeat scroll ;
+  display: inline-block;
+  height: 45px;
+  margin-top: 10px;
+  width: 53px;
+  background-position:-228px -6px;
+}
+
+
+.categoryImage5{
+  background:rgba(0, 0, 0, 0) url("../img/home.png") no-repeat scroll ;
+  display: inline-block;
+  height: 45px;
+  margin-top: 10px;
+  width: 53px;
+  background-position:-386px -6px;
+}
+
+.category3{
+  float:left;
+  margin-right: 2px;
+}
+
+.category{
+  float: left;
+  margin-right: 44px;
+}
+
+.category div.catName{
+  margin-left:50px;
+}
+.category1{
+  float:left;
+}
+
+.category2 div.catName ,.category3 div.catName{
+  margin-left:15px;
+  font-size: 12px;
+}
+.category4 div.catName{
+  margin-left:5px;
+  font-size: 12px;
+}
+.category2:hover{
+  background-color:#F4F4F4;
+  color: orange;
+  font-weight: 600;
+}
+.category2{
+  float: left;
+  padding: 0 51px 0 32px;
+
+}
+
+.category4{
+  float: left;
+  padding: 0 38px 0 33px;
+}
+
+.category5{
+  padding: 0 38px 0 46px;
+}
+
+
+.row1{
+  float: left;
+  height: 112px;
+}
+
+.row2{
+  float: left;
+  height: 112px;
+}
+
+.row3{
+  float: left;
+  height: 112px;
+}
+

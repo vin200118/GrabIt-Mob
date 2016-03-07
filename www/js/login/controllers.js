@@ -5,9 +5,24 @@ angular.module('starter.controllers', ['ngResource','starter.services'])
     $scope.login = function() {
 
       LoginService.loginUser($scope.data.username, $scope.data.password).success(function(data) {
-            var User = $resource('http://192.168.2.144:8080/GrabIt/user/login',null,{
+            var User = $resource('http://192.168.26.1:8080/GrabIt/user/login',null,{
                 'save' : { method:'POST'}
               });
+
+            /*  var User1 = $resource('http:// 172.10.10.37:8080/GrabIt/sample/1',null,{
+                  'get' : { method:'GET'}
+                });
+
+
+                User1.get()
+                .$promise.then(function(response) {
+                console.log(response);
+                alert(response.name);
+              }, function(error) {
+
+                  console.log(error);
+              });*/
+
               var response = User.save($scope.data)
               .$promise.then(function(response) {
                 if(response != undefined && response.errorCode == "200"){
@@ -22,6 +37,8 @@ angular.module('starter.controllers', ['ngResource','starter.services'])
 
                 console.log(error);
             });
+
+
 
             //  if(response != undefined && response.errorCode == "200"){
             //     $state.go("/home");
@@ -43,8 +60,4 @@ var failure = function(error) {
 
     }
 
-    }])
-    .controller('HomeCtrl',['$scope','$resource','$ionicPopup','$state', function($scope, $resource,$ionicPopup,$state ) {
-
-
-     }])
+  }])
