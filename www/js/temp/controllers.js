@@ -9,7 +9,10 @@ angular.module('starter.controllers', ['ngResource','starter.services'])
 
     var message = $stateParams.message;
     if(message != null){
-      showMessage('<span>'+message+'</span>',5000);
+      var alertPopup = $ionicPopup.alert({
+        title: 'Message',
+        template: message
+      });
     }
     $stateParams.message=null;
   });
@@ -27,18 +30,28 @@ angular.module('starter.controllers', ['ngResource','starter.services'])
                 if(response != undefined && response.statusCode == "200"){
                       $state.go("home");
                 }else if(response != undefined && response.statusCode == "401"){
-                  showMessage('<span>Please check your credentials!</span>');
+                  var alertPopup = $ionicPopup.alert({
+                      title: 'Login failed!',
+                      template: 'Please check your credentials!'
+                  });
                 }
             }, function(error) {
 
                 console.log(error);
             });
-          console.log("welcome");
+
+
+
+            //  if(response != undefined && response.errorCode == "200"){
+            //     $state.go("/home");
+            //  }
+              console.log("welcome");
        }).error(function(data) {
-         showMessage('<span>Username and Password both are required!</span>');
-
+           var alertPopup = $ionicPopup.alert({
+               title: 'Login failed!',
+               template: 'Please check your credentials!'
+           });
        });
-
        var success = function(response) {
   console.log('user was saved');
 };

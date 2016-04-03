@@ -1,15 +1,14 @@
-angular.module('starter.services', [])
-.service('LoginService', function($q) {
+angular.module('starter.emailServices', [])
+.service('EmailService', function($q) {
     return {
-        loginUser: function(name, pw) {
+        validateEmail: function(email) {
             var deferred = $q.defer();
             var promise = deferred.promise;
 
-            if (name != undefined && pw != undefined) {
+            if (email != '') {
                 deferred.resolve('Welcome ' + name + '!');
             } else {
-
-                deferred.reject('Wrong credentials.');
+                deferred.reject('Email Id is invalid.');
             }
             promise.success = function(fn) {
                 promise.then(fn);

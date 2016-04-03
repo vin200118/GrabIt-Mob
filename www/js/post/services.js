@@ -1,14 +1,13 @@
-angular.module('starter.services', [])
-.service('LoginService', function($q) {
+angular.module('starter.postService', [])
+.service('PostService', function($q) {
     return {
-        loginUser: function(name, pw) {
+        createPost: function(name, pw) {
             var deferred = $q.defer();
             var promise = deferred.promise;
 
-            if (name != undefined && pw != undefined) {
+            if (name != '' && pw != '') {
                 deferred.resolve('Welcome ' + name + '!');
             } else {
-
                 deferred.reject('Wrong credentials.');
             }
             promise.success = function(fn) {

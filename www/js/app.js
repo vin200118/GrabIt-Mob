@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic','starter.controllers','starter.homeController','starter.services'])
+angular.module('starter', ['ionic','starter.controllers','starter.homeController','starter.forgotPasswordController','starter.services','starter.emailServices','starter.searchController','starter.postController','starter.postService'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -32,7 +32,8 @@ angular.module('starter', ['ionic','starter.controllers','starter.homeController
   .state('login', {
        url: '/login',
        templateUrl: 'templates/login.html',
-       controller: 'LoginCtrl'
+       controller: 'LoginCtrl',
+       params:{'message': null}
    })
 
    .state('home', {
@@ -41,7 +42,28 @@ angular.module('starter', ['ionic','starter.controllers','starter.homeController
         controller: 'HomeCtrl'
     })
 
+    .state('forgotPassword', {
+      url: '/forgot-password',
+      templateUrl: 'templates/forgot_password.html',
+      controller: 'ForgotPasswordCtrl'
+
+    })
+
+    .state('post', {
+      url: '/add-post',
+      templateUrl: 'templates/add_post.html',
+      controller: 'PostCtrl'
+
+    })
+
+    .state('search', {
+         url: '/search/:categoryId',
+         templateUrl: 'templates/search.html',
+         controller: 'SearchCtrl'
+     })
+
+
    // if none of the above states are matched, use this as the fallback
-   $urlRouterProvider.otherwise('/home');
+   $urlRouterProvider.otherwise('/login');
 
  });

@@ -1,122 +1,94 @@
-/* Empty. Add your own CSS if you like */
 
-.mainHome{
-  margin-left: 11px;
-}
 .categoryImage{
   background: rgba(0, 0, 0, 0) url("../img/home.png") no-repeat scroll -12px -3px;
-  display: inline-block;
+  margin: 0 auto;
   height: 45px;
-  margin-top: 10px;
   width: 53px;
 
 }
 
 .categoryImage1{
   background: rgba(0, 0, 0, 0) url("../img/home.png") no-repeat scroll 0 0;
-  display: inline-block;
   height: 45px;
-  margin-top: 10px;
   width: 53px;
-    background-position:-74px -3px;
+  background-position:-82px -3px;
+  margin: 0 auto;
 }
 
 
 .categoryImage2{
   background:rgba(0, 0, 0, 0) url("../img/bikes.png") no-repeat scroll ;
-    display: inline-block;
+
     height: 45px;
-    margin-top: 10px;
     width: 53px;
     background-position:-4px -6px;
+  margin: 0 auto;
 }
 
 .categoryImage3{
   background:rgba(0, 0, 0, 0) url("../img/home.png") no-repeat scroll ;
-  display: inline-block;
+  margin: 0 auto;
   height: 45px;
-  margin-top: 10px;
   width: 53px;
-  background-position:-147px -6px;
+  background-position:-153px -6px;
 }
 
 .categoryImage4{
   background:rgba(0, 0, 0, 0) url("../img/home.png") no-repeat scroll ;
-  display: inline-block;
+  margin: 0 auto;
   height: 45px;
-  margin-top: 10px;
   width: 53px;
-  background-position:-228px -6px;
+  background-position:-232px -6px;
 }
 
 
 .categoryImage5{
   background:rgba(0, 0, 0, 0) url("../img/home.png") no-repeat scroll ;
-  display: inline-block;
+  margin: 0 auto;
   height: 45px;
-  margin-top: 10px;
   width: 53px;
-  background-position:-386px -6px;
+  background-position:-384px -6px;
 }
 
-.category3{
-  float:left;
-  margin-right: 2px;
+.categoryImage6{
+  background:rgba(0, 0, 0, 0) url("../img/home.png") no-repeat scroll ;
+  margin: 0 auto;
+  height: 45px;
+  width: 53px;
+  background-position:-231px -69px;
 }
 
-.category{
-  float: left;
-  margin-right: 44px;
-}
-
-.category div.catName{
-  margin-left:50px;
-}
-.category1{
-  float:left;
-}
-
-.category2 div.catName ,.category3 div.catName{
-  margin-left:15px;
-  font-size: 12px;
-}
-.category4 div.catName{
-  margin-left:5px;
-  font-size: 12px;
-}
-.category2:hover{
+.col:hover{
   background-color:#F4F4F4;
+  border-color:red;
   color: orange;
-  font-weight: 600;
-}
-.category2{
-  float: left;
-  padding: 0 51px 0 32px;
-
+  font-weight: 400;
 }
 
-.category4{
-  float: left;
-  padding: 0 38px 0 33px;
+.catName{
+  text-align: center;
+  font-size:13px;
+  color:Orange;
 }
 
-.category5{
-  padding: 0 38px 0 46px;
+.add_button{
+  margin-left: 43%;
+  margin-top: 8px;
+}
+
+.categoryLogoLeft{
+  border-left: 1px solid #D3D3D3;
+  height: 81px;
+  border-right: 0.1px solid #D3D3D3;
+
+}
+
+categoryLogoLeft:hover {
+    background-color: yellow;
 }
 
 
-.row1{
-  float: left;
-  height: 112px;
-}
+.categoryLogoRight{
+  border-right: 1px solid #D3D3D3;
 
-.row2{
-  float: left;
-  height: 112px;
 }
-
-.row3{
-  float: left;
-  height: 112px;
-}
-
