@@ -77,9 +77,10 @@
 }
 
 .categoryLogoLeft{
-  border-left: 1px solid #D3D3D3;
+
   height: 81px;
-  border-right: 0.1px solid #D3D3D3;
+
+   box-shadow: 5px 1px 6px lightgray
 
 }
 
@@ -89,6 +90,6 @@ categoryLogoLeft:hover {
 
 
 .categoryLogoRight{
-  border-right: 1px solid #D3D3D3;
+
 
 }

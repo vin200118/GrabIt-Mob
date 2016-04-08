@@ -10,11 +10,58 @@ $('.datepicker').pickadate({
     format: 'dd-mm-yyyy',
   formatSubmit: 'yyyy/mm/dd'
   });
+  $scope.data.type = 'S';
+  $scope.data.condition = 'U';
 console.log("in post controller");
+      $scope.submitPost = function(){
+        $scope.data.dateOfPurchase=$("#dateOfPurchase").val();
+        $scope.data.categoryId=$("#selectCategory").val();
+        $scope.data.subCategoryId=$("#subCategory").val();
+      PostService.validatePost($scope.data).success(function(data) {
+            console.log("submitPost..."+JSON.stringify($scope.data));
+            var Post = $resource('http://192.168.26.1:8080/GrabIt/post',null,{
+                'save' : { method:'POST'}
+              });
 
+              var response = Post.save($scope.data)
+              .$promise.then(function(response) {
+                if(response != undefined && response.statusCode == "201"){
+                      console.log("post created");
+                      showMessage('<span>'+response.message+'</span>');
+                      //  $state.go("search");
+                }
+            }, function(error) {
+
+                console.log(error);
+            });
+
+
+        }).error(function(error) {
+          showMessage('<span>'+error+'</span>');
+       });
+
+      }
       var category = $resource('http://192.168.26.1:8080/GrabIt/category', null, {
         'get': {method: 'GET',isArray:true}
       });
+  $scope.validateFields = function(data){
+      if(data.selectCategory == null){
+          showMessage('<span>category is empty</span>',5000);
+
+          return false;
+      }
+  }
+      $scope.conditionChange = function(value){
+
+        $scope.data.condition = value;
+        console.log(value);
+      }
+
+      $scope.typeChange = function(value){
+
+        $scope.data.type = value;
+        console.log(value);
+      }
       category.get()
           .$promise.then(function (response) {
           console.log(JSON.stringify(response));

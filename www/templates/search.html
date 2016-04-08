@@ -1,28 +1,44 @@
-<ion-view view-title="Search" name="login-view" >
-
+<ion-view view-title="Posts" name="login-view" >
   <ion-content>
-<div class="list list-inset" >
-  <label class="item item-input">
-   <i class="icon ion-search placeholder-icon"></i>
-   <input type="text" placeholder="Search">
- </label>
-    <label class="item item-input item-select">
-    <div class="input-label">
-      Category
-    </div>
-    <select ng-model="categoryId">
-      <option ng-repeat="category in categories" value="{{category.id}}">{{category.name}}</option>
-    </select>
-  </label>
-  <label class="item item-input item-select">
-  <div class="input-label">
-    Sub Category
-  </div>
-  <select ng-model="subCategoryId">
-    <option ng-repeat="category in subCategories" value="{{category.id}}">{{category.name}}</option>
-  </select>
-</label>
+    <form>
+    <nav>
+      <div class="nav-wrapper">
+        <form>
+          <div center class="input-field">
+            <input id="search" type="search" required placeholder="Search...">
+            <label for="search"></label>
+          </div>
+        </form>
+      </div>
+    </nav>
 
-</div>
+    <div class="row">
+       <form class="col s12">
+
+         <div class="row">
+           <div class="input-field col s12 m6">
+
+        <select id="categoryId">
+          <option value="" disabled selected>Choose your option</option>
+        </select>
+        <label>Category</label>
+      </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12 m6">
+
+     <select id="subcategoryId">
+       <option value="" disabled selected>Choose your option</option>
+     </select>
+     <label>Sub Category</label>
+   </div>
+   </div>
+   <ul id="postList" class="collection">
+   </ul>
+ </form>
+ </div>
+ </form>
+
   </ion-content>
 </ion-view>

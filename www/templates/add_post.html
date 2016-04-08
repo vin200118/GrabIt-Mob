@@ -6,7 +6,7 @@
          <div class="row">
            <div class="input-field col s12 m6">
 
-        <select id="selectCategory">
+        <select ng-model="data.selectCategory" id="selectCategory">
           <option value="" disabled selected>Choose your option</option>
         </select>
         <label>Category</label>
@@ -16,50 +16,69 @@
       <div class="row">
         <div class="input-field col s12 m6">
 
-     <select id="subCategory">
+     <select ng-model="data.subCategory" id="subCategory">
        <option value="" disabled selected>Choose your option</option>
      </select>
      <label>Sub Category</label>
    </div>
    </div>
+   <div class="row">
+      <div class="input-field col s12">
+            <input ng-model="data.title" id="title" type="text" class="validate">
+            <label for="title">Title</label>
+          </div>
+      </div>
+      <div class="row">
+         <div class="input-field col s12">
+               <input ng-model="data.brand" id="brand" type="text" class="validate">
+               <label for="brand">Brand</label>
+             </div>
+         </div>
+         <div class="row">
+            <div class="input-field col s12">
+                  <input ng-model="data.model" id="model" type="text" class="validate">
+                  <label for="model">Model</label>
+                </div>
+            </div>
+     <div><label>Type</label></div>
   <div class="row">
-     <div class="input-field col s6 m6">
-      <input name="group1" type="radio" id="test1" />
-      <label for="test1">Want to Sell</label>
+     <div class="input-field col s6 m6" style="margin-top: -7px;">
+      <input ng-model="data.type" name="type" value="S" type="radio" id="type1" ng-change="typeChange('S')"/>
+      <label for="type1">Want to Sell</label>
     </div>
-      <div class="input-field col s6 m6">
-      <input name="group1" type="radio" id="test2" />
-      <label for="test2">Want to Buy</label>
+      <div class="input-field col s6 m6" style="margin-top: -7px;">
+      <input ng-model="data.type" name="type"  value="B" type="radio" id="type2" ng-change="typeChange('B')"/>
+      <label for="type2">Want to Buy</label>
     </div>
   </div>
     <div><label>Condition</label></div>
   <div class="row">
 
  <div class="input-field col s6 m6" style="margin-top: -7px;">
-      <input name="condition" type="radio" id="condition1" />
+      <input ng-model="data.condition" name="condition" value="U" type="radio" id="condition1" ng-change="conditionChange('U')"/>
       <label for="condition1">Used</label>
     </div>
       <div class="input-field col s6 m6" style="margin-top: -7px;">
-      <input name="condition" type="radio" id="condition2" />
+      <input ng-model="data.condition" name="condition" value="N" type="radio" id="condition2" ng-change="conditionChange('N')" />
       <label for="condition2">New</label>
     </div>
   </div>
 
   <div class="row">
      <div class="input-field col s12 m6">
-       <input  id="price" type="number" min=99 class="validate">
+       <input ng-model="data.price"  id="price" type="number" min=99 class="validate">
        <label for="price">Price</label>
   </div>
   </div>
     <div class="row">
        <div class="input-field col s12 m6">
-         <input  id="date" type="date" class="datepicker">
-         <label for="date">Date of purchase</label>
+         <input id="dateOfPurchase" type="date" class="datepicker">
+         <label for="dateOfPurchase">Date of purchase</label>
     </div>
   </div>
   <div class="row">
      <div class="input-field col s12">
-       <textarea id="description" class="materialize-textarea" maxlength="120"></textarea>
+       <textarea ng-model="data.description" id="description" class="materialize-textarea" maxlength="120"></textarea>
        <label for="description">Description</label>
      </div>
    </div>
@@ -67,25 +86,25 @@
 <div class="row">
    <div class="input-field col s12">
       <i class="material-icons prefix">account_circle</i>
-         <input id="name" type="text" class="validate">
+         <input ng-model="data.contactName" id="name" type="text" class="validate">
          <label for="name">Name</label>
        </div>
    </div>
    <div class="row">
          <div class="input-field col s6" style="margin-left: 39px;">
-           <input id="email" type="email" class="validate" >
-           <label for="email">Email</label>
+           <input ng-model="data.contactEmail" id="contactEmail" type="email" class="validate" >
+           <label for="contactEmail">Email</label>
          </div>
        </div>
    <div class="row">
                <div class="input-field col s12">
                  <i class="material-icons prefix">phone</i>
-           <input id="icon_telephone" type="number" class="validate" max="10">
-           <label for="icon_telephone">Telephone</label>
+           <input ng-model="data.contactNumber" id="contactNumber" type="number" class="validate">
+           <label for="contactNumber">Telephone</label>
                </div>
    </div>
    </div>
-   <a class="waves-effect waves-light btn">Submit Post</a>
+   <a class="waves-effect waves-light btn" ng-click="submitPost()">Submit Post</a>
 </form>
       </div>
 
