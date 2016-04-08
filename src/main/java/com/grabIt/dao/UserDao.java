@@ -4,6 +4,10 @@ import com.grabIt.domain.User;
 
 public interface UserDao {
 
-	User getLoginUserDetails(User user);
+	boolean isUserExist(String username, String password);
+
+	int updateUsersPassword(String username, String password);
+
+	User getUserDetails(String username);
 
 }
