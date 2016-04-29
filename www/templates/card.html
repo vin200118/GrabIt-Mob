@@ -1,0 +1,38 @@
+<ion-view view-title="Card" name="card-view" >
+  <ion-content>
+
+    <div class="card large">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img id="cardImg" class="activator" src="">
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4">{{data.title}}<i class="material-icons right">more_vert</i></span>
+      <p><label>Price</label> : {{data.price}} </p>
+      <p><label>Condition</label> : {{data.condition}} </p>
+      <p><label>Date of Purchase</label> : {{data.dateOfPurchase}} </p>
+      <div class="contactDetails">
+            <p>Contact Details</p>
+            <p><label>Contact Name</label> : {{data.contactName}} </p>
+            <p><label>Contact Email Id</label> : {{data.emailId}} </p>
+            <p><label>Contact Number</label> : {{data.contactNumber}} </p>
+
+      </div>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4">{{data.title}}<i class="material-icons right">close</i></span>
+      <div class="row">
+       <div class="col s12 m5">
+         <div class="card-panel teal">
+           <span class="white-text">I am a very simple card. I am good at containing small bits of information.
+           I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
+           </span>
+         </div>
+       </div>
+     </div>
+      <p></p>
+    </div>
+
+
+  </div>
+  </ion-content>
+</ion-view>

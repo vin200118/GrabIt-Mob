@@ -62,6 +62,12 @@ angular.module('starter', ['ionic','starter.controllers','starter.homeController
          controller: 'SearchCtrl'
      })
 
+     .state('card', {
+          url: '/card/:id',
+          templateUrl: 'templates/card.html',
+          controller: 'SearchCardCtrl'
+      })
+
 
    // if none of the above states are matched, use this as the fallback
    $urlRouterProvider.otherwise('/login');

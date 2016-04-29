@@ -6,3 +6,9 @@ var showMessage = function(message, miliseconds){
   }
     Materialize.toast($toastContent,miliseconds);
 }
+
+
+var baseUrl = function(){
+  //return 'http://192.168.26.1:8080/GrabIt';
+  return 'http://192.168.26.1:8080/GrabIt/';
+}

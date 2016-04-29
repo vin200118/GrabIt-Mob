@@ -18,7 +18,7 @@ angular.module('starter.controllers', ['ngResource','starter.services'])
     $scope.login = function() {
 
        LoginService.loginUser($scope.data.username, $scope.data.password).success(function(data) {
-            var User = $resource('http://192.168.26.1:8080/GrabIt/user/login',null,{
+            var User = $resource(baseUrl()+'user/login',null,{
                 'save' : { method:'POST'}
               });
 

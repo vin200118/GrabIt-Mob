@@ -1,7 +1,25 @@
-angular.module('starter.postController', ['ngResource','starter.postService'])
+angular.module('starter.postController', ['ngResource','starter.postService','ionic', 'ngCordova'])
 
-.controller('PostCtrl',['$scope','$resource','$ionicPopup','PostService','$state','$stateParams','$rootScope', function($scope, $resource,$ionicPopup,PostService,$state ,$stateParams,$rootScope) {
+.controller('PostCtrl',['$scope','$resource','$ionicPopup','PostService','$state','$stateParams','$rootScope','$cordovaCamera', function($scope, $resource,$ionicPopup,PostService,$state ,$stateParams,$rootScope,$cordovaCamera) {
     $scope.data = {};
+   $.cloudinary.config({ cloud_name: 'vinayak118', api_key: '278713757411919'});
+
+   $('.upload_field').unsigned_cloudinary_upload("zcudy0uz",
+  { cloud_name: 'demo', tags: 'browser_uploads' },
+  { multiple: true }
+).bind('cloudinarydone', function(e, data) {
+
+  $('.thumbnails').append($.cloudinary.image(data.result.public_id,
+    { format: 'jpg', width: 150, height: 100,
+      crop: 'thumb', gravity: 'face', effect: 'saturation:50' } ))}
+
+).bind('cloudinaryprogress', function(e, data) {
+
+  $('.progress_bar').css('width',
+    Math.round((data.loaded * 100.0) / data.total) + '%');
+
+});
+
 $('select').material_select();
 $('.datepicker').pickadate({
     selectMonths: true, // Creates a dropdown to control month
@@ -19,7 +37,7 @@ console.log("in post controller");
         $scope.data.subCategoryId=$("#subCategory").val();
       PostService.validatePost($scope.data).success(function(data) {
             console.log("submitPost..."+JSON.stringify($scope.data));
-            var Post = $resource('http://192.168.26.1:8080/GrabIt/post',null,{
+            var Post = $resource(baseUrl()+'post',null,{
                 'save' : { method:'POST'}
               });
 
@@ -41,7 +59,7 @@ console.log("in post controller");
        });
 
       }
-      var category = $resource('http://192.168.26.1:8080/GrabIt/category', null, {
+      var category = $resource(baseUrl()+'category', null, {
         'get': {method: 'GET',isArray:true}
       });
   $scope.validateFields = function(data){
@@ -82,7 +100,7 @@ console.log("in post controller");
         $('#selectCategory').on('change',function() {
         console.log("selected value print here..."+$('#selectCategory').val());
         var selectedCategoryId = $('#selectCategory').val();
-        var subCategory = $resource('http://192.168.26.1:8080/GrabIt/category/:categoryId', {categoryId: selectedCategoryId}, {
+        var subCategory = $resource(baseUrl()+'category/:categoryId', {categoryId: selectedCategoryId}, {
         'get': {method: 'GET',isArray:true}
         });
 
@@ -110,5 +128,49 @@ console.log("in post controller");
         console.log(error);
         });
       });
+
+      $scope.takePhoto = function () {
+                 var options = {
+                   quality: 75,
+                   destinationType: Camera.DestinationType.DATA_URL,
+                   sourceType: Camera.PictureSourceType.CAMERA,
+                   allowEdit: true,
+                   encodingType: Camera.EncodingType.JPEG,
+                   targetWidth: 300,
+                   targetHeight: 300,
+                   popoverOptions: CameraPopoverOptions,
+                   saveToPhotoAlbum: false
+               };
+
+                   $cordovaCamera.getPicture(options).then(function (imageData) {
+
+                        $scope.imgURI = "data:image/jpeg;base64," + imageData;
+                   }, function (err) {
+                     alert(err);
+                       // An error occured. Show a message to the user
+                   });
+               }
+
+               $scope.choosePhoto = function () {
+                 var options = {
+                   quality: 75,
+                   destinationType: Camera.DestinationType.DATA_URL,
+                   sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+                   allowEdit: true,
+                   encodingType: Camera.EncodingType.JPEG,
+                   targetWidth: 300,
+                   targetHeight: 300,
+                   popoverOptions: CameraPopoverOptions,
+                   saveToPhotoAlbum: false
+               };
+
+                   $cordovaCamera.getPicture(options).then(function (imageData) {
+                     $scope.imgURI = "data:image/jpeg;base64," + imageData;
+
+                   }, function (err) {
+                     alert(err);
+                       // An error occured. Show a message to the user
+                   });
+               }
 
 }]);

@@ -15,7 +15,7 @@ angular.module('starter.forgotPasswordController', ['ngResource','starter.emailS
 
       EmailService.validateEmail($scope.data.email).success(function (data) {
 
-        var User1 = $resource('http://192.168.26.1:8080/GrabIt/email/forgot-password?toAddress=:toAddress', {toAddress: $scope.data.email}, {
+        var User1 = $resource(baseUrl()+'email/forgot-password?toAddress=:toAddress', {toAddress: $scope.data.email}, {
           'get': {method: 'GET'}
         });
 
@@ -46,4 +46,3 @@ angular.module('starter.forgotPasswordController', ['ngResource','starter.emailS
     }
 
   }]);
-
