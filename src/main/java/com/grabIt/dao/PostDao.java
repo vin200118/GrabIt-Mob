@@ -10,4 +10,6 @@ public interface PostDao {
 
 	List<Post> getPosts(String search, String categoryId, String subCategoryId);
 
+	Post getPost(String id);
+
 }

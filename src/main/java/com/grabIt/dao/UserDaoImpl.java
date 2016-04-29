@@ -22,7 +22,7 @@ public class UserDaoImpl implements UserDao {
 	
 	@Override
 	public boolean isUserExist(String username, String password) {
-		String SQL = "select id, username, password from user where username=:username AND password=:password";
+		String SQL = "select id, username, password from \"user\" where username=:username AND password=:password";
 		
 		  MapSqlParameterSource namedParameters = new MapSqlParameterSource(); 
 		  namedParameters.addValue("username", username);     
@@ -45,7 +45,7 @@ public class UserDaoImpl implements UserDao {
 	
 	@Override
 	public User getUserDetails(String username) {
-		String SQL = "select id, username, password FROM USER WHERE USERNAME=:username";
+		String SQL = "select id, username, password FROM \"user\" WHERE USERNAME=:username";
 		
 		  MapSqlParameterSource namedParameters = new MapSqlParameterSource(); 
 		  namedParameters.addValue("username", username);     
@@ -70,7 +70,7 @@ public class UserDaoImpl implements UserDao {
 	
 	@Override
 	public int updateUsersPassword(String username, String password) {
-		 String SQL = "UPDATE USER SET PASSWORD=:password WHERE USERNAME=:username";  
+		 String SQL = "UPDATE \"user\" SET PASSWORD=:password WHERE USERNAME=:username";  
 		 MapSqlParameterSource namedParameters = new MapSqlParameterSource(); 
 		  namedParameters.addValue("password", password);     
 		  namedParameters.addValue("username", username); 

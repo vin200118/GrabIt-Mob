@@ -18,7 +18,7 @@ public class EMailDaoImpl implements EMailDao {
 	
 	@Override
 	public boolean isEmailIdExist(String emailId) {
-		String SQL = "select username from user where username=:emailId";
+		String SQL = "select username from \"user\" where username=:emailId";
 		
 		  MapSqlParameterSource namedParameters = new MapSqlParameterSource(); 
 		  namedParameters.addValue("emailId", emailId);     

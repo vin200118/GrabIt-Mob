@@ -12,6 +12,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -53,6 +54,12 @@ public class PostController extends BaseController {
 											   @RequestParam(required = false,value ="subCategoryId") String subCategoryId){
 		
 		return new ResponseEntity<List<Post>>(postService.getPosts(search, categoryId, subCategoryId),HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/{id}",method = RequestMethod.GET)
+	public ResponseEntity<Post> getPosts(@PathVariable("id") String id){
+		
+		return new ResponseEntity<Post>(postService.getPost(id),HttpStatus.OK);
 	}
 	
 
