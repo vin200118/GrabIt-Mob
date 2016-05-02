@@ -32,7 +32,8 @@ public class PostService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-			
+	
+		
 		return postDao.addPost(post);
 		
 	}

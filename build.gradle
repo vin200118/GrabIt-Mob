@@ -35,7 +35,7 @@ dependencies {
 	compile 'javax.mail:mail:1.4.7'
 	compile 'org.apache.commons:commons-lang3:3.0'
 	compile 'com.cloudinary:cloudinary-http44:1.4.1'
-	compile 'com.github.jsimone:webapp-runner:8.0.30.2'
+	//compile 'com.github.jsimone:webapp-runner:8.0.30.2'
 	
 	
 
