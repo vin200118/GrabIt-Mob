@@ -20,7 +20,7 @@ public class CategoryDaoImpl  implements CategoryDao {
 	
 	@Override
 	public List<Category> getCategories() {
-		String SQL = "SELECT id, name FROM category";
+		String SQL = "SELECT id, name FROM \"category\"";
 		List<Category> categories =  namedParameterJdbcTemplate.query(SQL,  new RowMapper<Category>() {
  
             public Category mapRow(ResultSet result, int rowNum) throws SQLException {
@@ -37,7 +37,7 @@ public class CategoryDaoImpl  implements CategoryDao {
 
 	@Override
 	public List<Category> getSubCategories(String categoryId) {
-		String SQL = "SELECT id, name, category_id FROM sub_category WHERE category_id=:categoryId";
+		String SQL = "SELECT id, name, category_id FROM \"sub_category\" WHERE category_id=:categoryId";
 		
 		 MapSqlParameterSource namedParameters = new MapSqlParameterSource();  
 		  namedParameters.addValue("categoryId", categoryId); 

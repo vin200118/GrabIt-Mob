@@ -21,7 +21,7 @@ public class SampleDaoImpl implements SampleDao{
 	
 	@Override
 	public Sample getSampleData(String id) {
-		String SQL = "select id,name,lastName from sample where id=:id";
+		String SQL = "select id,name,lastName from \"sample\" where id=:id";
 		SqlParameterSource namedParameters = new MapSqlParameterSource("id", id); 
 		Sample sample = (Sample) namedParameterJdbcTemplate.queryForObject(SQL, namedParameters,  new RowMapper<Sample>() {
  
@@ -41,7 +41,7 @@ public class SampleDaoImpl implements SampleDao{
 
 	@Override
 	public List<Sample> getListSample() {
-		String SQL = "select id,name,lastName from sample";
+		String SQL = "select id,name,lastName from \"sample\"";
 		List<Sample> sample =  namedParameterJdbcTemplate.query(SQL,  new RowMapper<Sample>() {
  
             public Sample mapRow(ResultSet result, int rowNum) throws SQLException {
@@ -60,7 +60,7 @@ public class SampleDaoImpl implements SampleDao{
 
 	@Override
 	public void addSample(Sample sample) {
-		 String SQL = "INSERT INTO Sample (id, name, lastName) VALUES (:id, :name, :lastName)";  
+		 String SQL = "INSERT INTO \"Sample\" (id, name, lastName) VALUES (:id, :name, :lastName)";  
 		 MapSqlParameterSource namedParameters = new MapSqlParameterSource(); 
 		  namedParameters.addValue("id", sample.getId());     
 		  namedParameters.addValue("name", sample.getName());     
@@ -70,7 +70,7 @@ public class SampleDaoImpl implements SampleDao{
 
 	@Override
 	public void updateSample(Sample sample) {
-		String SQL = "UPDATE Sample SET NAME=:name,lastName=:lastName where id=:id";  
+		String SQL = "UPDATE \"Sample\" SET NAME=:name,lastName=:lastName where id=:id";  
 		  MapSqlParameterSource namedParameters = new MapSqlParameterSource();  
 		  namedParameters.addValue("name", sample.getName());     
 		  namedParameters.addValue("lastName", sample.getLastName());  
@@ -80,7 +80,7 @@ public class SampleDaoImpl implements SampleDao{
 
 	@Override
 	public void deleteSampleData(int id) {
-		String SQL = "DELETE FROM Sample where id=:id"; 
+		String SQL = "DELETE FROM \"Sample\" where id=:id"; 
 		 MapSqlParameterSource namedParameters = new MapSqlParameterSource("id", id);
 	      namedParameterJdbcTemplate.update(SQL, namedParameters);  
 	}

@@ -1,1 +1,1 @@
-web: build/install/GrabIt/bin/GrabIt
+web: cd build ; java -Dgrails.env=prod -jar ../build/resources/main/webapp-runner-*.jar --expand-war --port $PORT libs/*.war

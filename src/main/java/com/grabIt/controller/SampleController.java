@@ -1,9 +1,6 @@
 package com.grabIt.controller;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
 import javax.validation.Valid;
 
@@ -23,8 +20,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cloudinary.Cloudinary;
-import com.cloudinary.utils.ObjectUtils;
 import com.grabIt.domain.Sample;
 import com.grabIt.service.SampleService;
 import com.grabIt.validator.SampleValidator;
@@ -58,7 +53,7 @@ public class SampleController {
 	public ResponseEntity<List<Sample>> getListSample(){
 		logger.info("Getting sample api... info level");
 		logger.debug("Getting sample api... debug level");
-		Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap(
+		/*Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap(
 				  "cloud_name", "vinayak118",
 				  "api_key", "278713757411919",
 				  "api_secret", "qC2dHyCsUUcI7WjMfnSQ1Mrv2mE"));
@@ -72,7 +67,7 @@ public class SampleController {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 		return new ResponseEntity<List<Sample>>(sampleService.getListSample(),HttpStatus.OK);
 	}
 	

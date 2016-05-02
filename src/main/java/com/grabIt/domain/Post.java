@@ -20,9 +20,10 @@ public class Post {
 	private String description;
 	private String contactName;
 	private String contactNumber;
-	private String emailId;
+	private String contactEmail;
 	private String brand;
 	private String model;
+	private String image;
 
 
 }

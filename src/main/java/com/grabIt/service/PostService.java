@@ -26,13 +26,13 @@ public class PostService {
 				  "api_key", "278713757411919",
 				  "api_secret", "qC2dHyCsUUcI7WjMfnSQ1Mrv2mE"));
 		try {
-			Map uploadResult = cloudinary.uploader().upload(post.getImagePath(), ObjectUtils.asMap());
+			Map uploadResult = cloudinary.uploader().upload(post.getImage(), ObjectUtils.asMap());
 			post.setImagePath(uploadResult.get("url").toString());
 			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+		post.setImagePath("imagepathset");
 		
 		return postDao.addPost(post);
 		

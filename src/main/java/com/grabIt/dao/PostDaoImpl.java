@@ -26,7 +26,7 @@ public class PostDaoImpl implements PostDao {
 
 	@Override
 	public int addPost(Post post) {
-		String SQL = "INSERT INTO post (id, user_id, title, category_id, subcategory_id, image_path, brand, model, type, price, item_condition, date_of_purchase, description, contact_name, contact_number, contact_email_id, created_date) "
+		String SQL = "INSERT INTO \"post\" (id, user_id, title, category_id, subcategory_id, image_path, brand, model, type, price, item_condition, date_of_purchase, description, contact_name, contact_number, contact_email_id, created_date) "
 								+ " VALUES (:id, :userId, :title, :categoryId, :subcategoryId, :imagePath, :brand, :model, :type, :price,:condition, :dateOfPurchase, :description, :contactName, :contactNumber, :contactEmailId, :createdDate)";
 		MapSqlParameterSource namedParameters = new MapSqlParameterSource();
 		namedParameters.addValue("id", Utility.getUUID());
@@ -44,7 +44,7 @@ public class PostDaoImpl implements PostDao {
 		namedParameters.addValue("description", post.getDescription());
 		namedParameters.addValue("contactName", post.getContactName());
 		namedParameters.addValue("contactNumber", post.getContactNumber());
-		namedParameters.addValue("contactEmailId", post.getEmailId());
+		namedParameters.addValue("contactEmailId", post.getContactEmail());
 		namedParameters.addValue("createdDate", new Timestamp(new Date().getTime()));
 		return namedParameterJdbcTemplate.update(SQL, namedParameters);
 	}
@@ -53,7 +53,7 @@ public class PostDaoImpl implements PostDao {
 	public List<Post> getPosts(String search, String categoryId, String subCategoryId) {
 		boolean isAndCondition = false;
 		String SQL = "SELECT id, user_id, title, category_id, subcategory_id, image_path, brand, model, type, price, item_condition, date_of_purchase, description, "
-					+ "contact_name, contact_number, contact_email_id FROM post";
+					+ "contact_name, contact_number, contact_email_id FROM \"post\"";
 					if(StringUtils.isNotEmpty(search) || (StringUtils.isNotEmpty(categoryId) && !"0".equals(categoryId)) || (StringUtils.isNotEmpty(subCategoryId) && !"0".equals(subCategoryId))){
 						SQL+=" WHERE";
 					}			
@@ -89,7 +89,7 @@ public class PostDaoImpl implements PostDao {
             	post.setContactNumber(rs.getString("contact_number"));
             	post.setDateOfPurchase(rs.getString("date_of_purchase"));
             	post.setDescription(rs.getString("description"));
-            	post.setEmailId(rs.getString("contact_email_id"));
+            	post.setContactEmail(rs.getString("contact_email_id"));
             	post.setId(rs.getString("id"));
             	post.setImagePath(rs.getString("image_path"));
             	post.setModel(rs.getString("model"));
@@ -110,7 +110,7 @@ public class PostDaoImpl implements PostDao {
 	@Override
 	public Post getPost(String id) {
 		String SQL = "SELECT id, user_id, title, category_id, subcategory_id, image_path, brand, model, type, price, item_condition, date_of_purchase, description, "
-				+ "contact_name, contact_number, contact_email_id FROM post WHERE id=:id";
+				+ "contact_name, contact_number, contact_email_id FROM \"post\" WHERE id=:id";
 		SqlParameterSource namedParameters = new MapSqlParameterSource("id", id); 
 		Post post = (Post) namedParameterJdbcTemplate.queryForObject(SQL, namedParameters,  new RowMapper<Post>() {
  
@@ -123,7 +123,7 @@ public class PostDaoImpl implements PostDao {
             	post.setContactNumber(rs.getString("contact_number"));
             	post.setDateOfPurchase(rs.getString("date_of_purchase"));
             	post.setDescription(rs.getString("description"));
-            	post.setEmailId(rs.getString("contact_email_id"));
+            	post.setContactEmail(rs.getString("contact_email_id"));
             	post.setId(rs.getString("id"));
             	post.setImagePath(rs.getString("image_path"));
             	post.setModel(rs.getString("model"));

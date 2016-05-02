@@ -1,7 +1,8 @@
-defaultTasks 'clean','build'
+defaultTasks 'clean','build','war'
 
 apply plugin : 'java'
 apply plugin : 'eclipse'
+apply plugin : 'war'
 
 
 
@@ -9,9 +10,7 @@ repositories {
 	mavenCentral()
 }
 
-task stage {
-  dependsOn build
-}
+
 dependencies {
 	compile 'org.springframework:spring-context:4.2.4.RELEASE'
 	compile 'org.springframework:spring-context-support:4.2.4.RELEASE'
@@ -36,6 +35,7 @@ dependencies {
 	compile 'javax.mail:mail:1.4.7'
 	compile 'org.apache.commons:commons-lang3:3.0'
 	compile 'com.cloudinary:cloudinary-http44:1.4.1'
+	compile 'com.github.jsimone:webapp-runner:8.0.30.2'
 	
 	
 
