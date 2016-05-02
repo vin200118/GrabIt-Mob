@@ -32,8 +32,7 @@ public class PostService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		post.setImagePath("imagepathset");
-		
+			
 		return postDao.addPost(post);
 		
 	}
