@@ -59,7 +59,7 @@
 }
 
 .col:hover{
-  background-color:#F4F4F4;
+ background-color:#F4F4F4;
   border-color:red;
   color: orange;
   font-weight: 400;
@@ -99,7 +99,27 @@ categoryLogoLeft:hover {
   background-color:#ef6c00;
   width:100%;
 }
+.cameraPostImg{
+ /* margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-top: 15px;
+  border:4px solid lightblue*/
+  display: block;
+  border:4px solid lightblue;
 
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+.loginLogo{
+  background-image: url('/img/grab-it.png');
+  background-size: 319px 158px;
+  background-repeat: no-repeat;
+  height: 156px;
+}
 /*.input-field label {
      color: #ef6c00;
    }

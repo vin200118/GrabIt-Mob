@@ -25,7 +25,7 @@ angular.module('starter.controllers', ['ngResource','starter.services'])
               var response = User.save($scope.data)
               .$promise.then(function(response) {
                 if(response != undefined && response.statusCode == "200"){
-                      $state.go("home");
+                      $state.go("app.home");
                 }else if(response != undefined && response.statusCode == "401"){
                   showMessage('<span>Please check your credentials!</span>');
                 }
@@ -49,4 +49,12 @@ var failure = function(error) {
 
     }
 
-  }])
+}]).controller('SideBarCtrl',['$scope','$parse','$resource','$ionicPopup','$state','$stateParams', function($scope,$parse,$resource,$ionicPopup,$state,$stateParams ) {
+
+  console.log("side bar controller...");
+  $scope.logout = function() {
+    $state.go("login");
+  };
+
+}])
+

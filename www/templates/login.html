@@ -1,19 +1,21 @@
 <ion-view view-title="Login" name="login-view">
   <ion-content class="padding">
-<div class="row">
-   <form class="col s12">
-       <div class="input-field col s12">
-          <input placeholder="" id="username" type="text" class="validate" ng-model="data.username">
-          <label for="username">Username</label>
+    <div class="row" >
+       <form class="col s12">
+           <div class="input-field col s12">
+              <input placeholder="" id="username" type="text" class="validate" ng-model="data.username">
+              <label for="username">Username</label>
+            </div>
+             <div class="input-field col s12">
+                <input placeholder="" id="password" type="password" class="validate" ng-model="data.password">
+                <label for="password">Password</label>
+              </div>
+              <a class="waves-effect waves-light btn" ng-click="login()">Login</a>
+          </form>
         </div>
-         <div class="input-field col s12">
-            <input placeholder="" id="password" type="password" class="validate" ng-model="data.password">
-            <label for="password">Password</label>
-          </div>
-          <a class="waves-effect waves-light btn" ng-click="login()">Login</a>
-      </from>
-    </div>
 
     <a href="#/forgot-password">Forgot Password</a>
+    <div class="row" class="loginLogo"style="background-image: url('/img/grab-it.png');background-size: 319px 158px;background-repeat: no-repeat;height: 156px;"></div>
+
   </ion-content>
 </ion-view>

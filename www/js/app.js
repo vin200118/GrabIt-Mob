@@ -29,17 +29,29 @@ angular.module('starter', ['ionic','starter.controllers','starter.homeController
   // Each state's controller can be found in controllers.js
 
   $stateProvider
+    .state('app', {
+      url: '/app',
+      abstract: true,
+      templateUrl: 'templates/menu.html',
+      controller: 'SideBarCtrl'
+    })
+
   .state('login', {
        url: '/login',
+
        templateUrl: 'templates/login.html',
        controller: 'LoginCtrl',
        params:{'message': null}
    })
 
-   .state('home', {
+   .state('app.home', {
         url: '/home',
-        templateUrl: 'templates/home.html',
-        controller: 'HomeCtrl'
+     views: {
+       'menuContent': {
+         templateUrl: 'templates/home.html',
+         controller: 'HomeCtrl'
+       }
+     }
     })
 
     .state('forgotPassword', {
@@ -49,23 +61,35 @@ angular.module('starter', ['ionic','starter.controllers','starter.homeController
 
     })
 
-    .state('post', {
+    .state('app.post', {
       url: '/add-post',
-      templateUrl: 'templates/add_post.html',
-      controller: 'PostCtrl'
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/add_post.html',
+          controller: 'PostCtrl'
+        }
+      }
 
     })
 
-    .state('search', {
+    .state('app.search', {
          url: '/search/:categoryId',
-         templateUrl: 'templates/search.html',
-         controller: 'SearchCtrl'
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/search.html',
+          controller: 'SearchCtrl'
+        }
+      }
      })
 
-     .state('card', {
+     .state('app.card', {
           url: '/card/:id',
-          templateUrl: 'templates/card.html',
-          controller: 'SearchCardCtrl'
+       views: {
+         'menuContent': {
+           templateUrl: 'templates/card.html',
+           controller: 'SearchCardCtrl'
+         }
+       }
       })
 
 

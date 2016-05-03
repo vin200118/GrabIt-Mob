@@ -81,8 +81,8 @@ console.log($stateParams);
               }
 
                   $('#postList').append($('<li class="collection-item avatar">'+
-                    '<img src="/img/splendar.jpg" alt="" class="circle"/>'+
-                     '<a href="#/card/'+item.id+'"<span class="title">'+item.title+'</span>'+
+                    '<img src="'+item.imagePath+'" alt="" class="circle"/>'+
+                     '<a href="#/app/card/'+item.id+'"<span class="title">'+item.title+'</span>'+
                    '<p>Price :'+item.price+'/-</p>'+
                    '<p>Condition:'+condition+'</p></a></li>'));
             });
