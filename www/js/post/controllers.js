@@ -13,6 +13,9 @@ angular.module('starter.postController', ['ngResource','starter.postService','io
     });
     $scope.data.type = 'S';
     $scope.data.condition = 'U';
+    if(localStorage.id != undefined){
+      $scope.data.userId = localStorage.id;
+    }
     console.log("in post controller");
     $scope.submitPost = function(){
       $scope.data.dateOfPurchase=$("#dateOfPurchase").val();

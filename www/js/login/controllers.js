@@ -1,11 +1,18 @@
 angular.module('starter.controllers', ['ngResource','starter.services'])
 
-.controller('LoginCtrl',['$scope','$resource','$ionicPopup','LoginService','$state','$stateParams','$rootScope', function($scope, $resource,$ionicPopup,LoginService,$state ,$stateParams,$rootScope) {
+.controller('LoginCtrl',['$scope','$resource','$ionicPopup','LoginService','$state','$stateParams','$rootScope','$window', function($scope, $resource,$ionicPopup,LoginService,$state ,$stateParams,$rootScope,$window) {
     $scope.data = {};
-
+  alert(localStorage.id);
+  if(localStorage.id != undefined){
+    $state.go("app.home");
+  }
 
   $rootScope.$on('$locationChangeSuccess', function () {
     console.log('$locationChangeSuccess changed!', new Date());
+    alert(localStorage.id);
+    if(localStorage.id == undefined){
+      $state.go("login");
+    }
 
     var message = $stateParams.message;
     if(message != null){
@@ -25,6 +32,9 @@ angular.module('starter.controllers', ['ngResource','starter.services'])
               var response = User.save($scope.data)
               .$promise.then(function(response) {
                 if(response != undefined && response.statusCode == "200"){
+                  localStorage.setItem("id",response.details.id);
+                  console.log(localStorage.length);
+                  console.log(localStorage.id)
                       $state.go("app.home");
                 }else if(response != undefined && response.statusCode == "401"){
                   showMessage('<span>Please check your credentials!</span>');
@@ -49,12 +59,19 @@ var failure = function(error) {
 
     }
 
-}]).controller('SideBarCtrl',['$scope','$parse','$resource','$ionicPopup','$state','$stateParams', function($scope,$parse,$resource,$ionicPopup,$state,$stateParams ) {
+}]).controller('SideBarCtrl',['$scope','$parse','$resource','$ionicPopup','$state','$stateParams','$window', function($scope,$parse,$resource,$ionicPopup,$state,$stateParams,$window ) {
 
   console.log("side bar controller...");
   $scope.logout = function() {
+    localStorage.removeItem("id");
     $state.go("login");
   };
+
+  $scope.mypost= function() {
+
+    $state.go("app.mypost");
+  };
+
 
 }])
 
