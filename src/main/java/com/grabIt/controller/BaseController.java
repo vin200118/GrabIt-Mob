@@ -1,5 +1,9 @@
 package com.grabIt.controller;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,6 +21,7 @@ public class BaseController {
 	
 	private String statusCode;
 	private String message;
+	private Map<String, String> details = new HashMap<String, String>();
 	
 	
 }

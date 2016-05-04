@@ -38,8 +38,8 @@ public class PostService {
 		
 	}
 
-	public List<Post> getPosts(String search, String categoryId, String subCategoryId) {
-		return postDao.getPosts(search, categoryId, subCategoryId);
+	public List<Post> getPosts(String search, String categoryId, String subCategoryId, String userId) {
+		return postDao.getPosts(search, categoryId, subCategoryId, userId);
 	}
 
 	public Post getPost(String id) {

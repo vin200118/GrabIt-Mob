@@ -28,18 +28,20 @@ public class UserController extends BaseController {
 	public UserDao userDao;
 	
 	@Autowired
-	public UserService UserService;
+	public UserService userService;
 	
 	
 	@InitBinder
 	protected void initBinder(WebDataBinder binder) {
-	    binder.setValidator(new UserValidator(UserService,userDao));
+	    binder.setValidator(new UserValidator(userService,userDao));
 	}
 	
 	@RequestMapping(value = "login",method = RequestMethod.POST)
 	public ResponseEntity<BaseController>  getLoginUserDetails(@Valid @RequestBody User user , BindingResult result){
 		
 		if(!result.hasErrors()){
+			User userdetails = userService.getUserDetails(user.getUsername());
+			getDetails().put("id", userdetails.getId());
 			setMessage(LOGIN_SUCESS);
 			setStatusCode(STATUS_CODE_OK);
 		}else{

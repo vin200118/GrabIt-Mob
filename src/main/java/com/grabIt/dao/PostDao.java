@@ -8,7 +8,7 @@ public interface PostDao {
 
 	int addPost(Post post);
 
-	List<Post> getPosts(String search, String categoryId, String subCategoryId);
+	List<Post> getPosts(String search, String categoryId, String subCategoryId, String userId);
 
 	Post getPost(String id);
 

@@ -50,11 +50,14 @@ public class PostDaoImpl implements PostDao {
 	}
 	
 	@Override
-	public List<Post> getPosts(String search, String categoryId, String subCategoryId) {
+	public List<Post> getPosts(String search, String categoryId, String subCategoryId, String userId) {
 		boolean isAndCondition = false;
 		String SQL = "SELECT id, user_id, title, category_id, subcategory_id, image_path, brand, model, type, price, item_condition, date_of_purchase, description, "
 					+ "contact_name, contact_number, contact_email_id FROM \"post\"";
-					if(StringUtils.isNotEmpty(search) || (StringUtils.isNotEmpty(categoryId) && !"0".equals(categoryId)) || (StringUtils.isNotEmpty(subCategoryId) && !"0".equals(subCategoryId))){
+					if(StringUtils.isNotEmpty(search) || 
+							(StringUtils.isNotEmpty(categoryId) && !"0".equals(categoryId)) || 
+							(StringUtils.isNotEmpty(subCategoryId) && !"0".equals(subCategoryId)) ||
+							(StringUtils.isNotEmpty(userId) && !"0".equals(subCategoryId)) ){
 						SQL+=" WHERE";
 					}			
 					if(StringUtils.isNotEmpty(search)){
@@ -77,6 +80,9 @@ public class PostDaoImpl implements PostDao {
 						}
 						SQL+=" subcategory_id='"+subCategoryId+"')";
 						
+					}
+					if(StringUtils.isNotEmpty(userId) && !"0".equals(userId)){
+						SQL+=" user_id='"+userId+"'";
 					}
 					SQL+= " order by created_date desc ;";
 		List<Post> posts =  namedParameterJdbcTemplate.query(SQL,  new RowMapper<Post>() {

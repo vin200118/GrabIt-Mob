@@ -51,9 +51,10 @@ public class PostController extends BaseController {
 	@RequestMapping(value = "",method = RequestMethod.GET)
 	public ResponseEntity<List<Post>> getPosts(@RequestParam(required = false,value ="search") String search,
 											   @RequestParam(required = false,value ="categoryId") String categoryId,
-											   @RequestParam(required = false,value ="subCategoryId") String subCategoryId){
+											   @RequestParam(required = false,value ="subCategoryId") String subCategoryId,
+											   @RequestParam(required = false,value ="userId") String userId){
 		
-		return new ResponseEntity<List<Post>>(postService.getPosts(search, categoryId, subCategoryId),HttpStatus.OK);
+		return new ResponseEntity<List<Post>>(postService.getPosts(search, categoryId, subCategoryId,userId),HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/{id}",method = RequestMethod.GET)
