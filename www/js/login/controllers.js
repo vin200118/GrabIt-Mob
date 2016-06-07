@@ -2,14 +2,14 @@ angular.module('starter.controllers', ['ngResource','starter.services'])
 
 .controller('LoginCtrl',['$scope','$resource','$ionicPopup','LoginService','$state','$stateParams','$rootScope','$window', function($scope, $resource,$ionicPopup,LoginService,$state ,$stateParams,$rootScope,$window) {
     $scope.data = {};
-  alert(localStorage.id);
+
   if(localStorage.id != undefined){
     $state.go("app.home");
   }
 
   $rootScope.$on('$locationChangeSuccess', function () {
     console.log('$locationChangeSuccess changed!', new Date());
-    alert(localStorage.id);
+
     if(localStorage.id == undefined){
       $state.go("login");
     }

@@ -1,0 +1,14 @@
+{       "id":"1",
+	"userId":"12",
+	"subCategroyId":"123",
+	"categoryId":"1234",
+	"imagePath":"/imagepaht",
+	"type":"S",
+	"condition":"O",
+	"price":1234.45,
+	"dateOfPurchase":"",
+	"description":"descritoin",
+	"contactName":"vinayk",
+	"contactNumber":"121242342",
+	"emailId":"vpadekar@nium.com"
+	}

@@ -1,3 +1,4 @@
+
 # Specifies intentionally untracked files to ignore when using Git
 # http://git-scm.com/docs/gitignore
 
@@ -5,3 +6,24 @@ node_modules/
 platforms/
 plugins/
 .idea/
+
+# Non-project-specific build files:
+/.gradle
+/.settings
+/.classpath
+/.project
+/bin
+/build
+/.git
+/.gradle
+
+build
+.gradle
+.idea
+out
+*.iml
+*.ipr
+*.iws
+.env
+.DS_Store
+

@@ -1,9 +1,15 @@
 angular.module('starter.postController', ['ngResource','starter.postService','ionic', 'ngCordova'])
-
   .controller('PostCtrl',['$scope','$resource','$ionicPopup','PostService','$state','$stateParams','$rootScope','$cordovaCamera', function($scope, $resource,$ionicPopup,PostService,$state ,$stateParams,$rootScope,$cordovaCamera) {
     $scope.data = {};
 
-    $('select').material_select();
+    if(sessionStorage.getItem("data") != undefined){
+      console.log(sessionStorage.getItem("data"));
+      $scope.data = JSON.parse(sessionStorage.getItem("data"));
+      $("#dateOfPurchase").val($scope.data.dateOfPurchase);
+      $("#selectCategory").val($scope.data.categoryId);
+      $("#subCategory").val($scope.data.subCategoryId);
+    }
+     $('select').material_select();
     $('.datepicker').pickadate({
       selectMonths: true, // Creates a dropdown to control month
       selectYears: 15, // Creates a dropdown of 15 years to control year
@@ -19,11 +25,11 @@ angular.module('starter.postController', ['ngResource','starter.postService','io
     console.log("in post controller");
     $scope.submitPost = function(){
       $scope.data.dateOfPurchase=$("#dateOfPurchase").val();
-      $scope.data.categoryId=$("#selectCategory").val();
-      $scope.data.subCategoryId=$("#subCategory").val();
-      $scope.data.contactEmail=$("#subCategory").val();
+     $scope.data.categoryId=$("#selectCategory").val();
+     $scope.data.subCategoryId=$("#subCategory").val();
+      contactEmail=$("#contactEmail").val();
       PostService.validatePost($scope.data).success(function(data) {
-        console.log("submitPost..."+JSON.stringify($scope.data));
+      console.log("submitPost..."+JSON.stringify($scope.data));
         var Post = $resource(baseUrl()+'post',null,{
           'save' : { method:'POST'}
         });
@@ -55,8 +61,8 @@ angular.module('starter.postController', ['ngResource','starter.postService','io
 
         return false;
       }
-    }
-    $scope.conditionChange = function(value){
+      }
+       $scope.conditionChange = function(value){
 
       $scope.data.condition = value;
       console.log(value);

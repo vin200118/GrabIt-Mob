@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns:oxm="http://www.springframework.org/schema/oxm" 
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+    http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+    http://www.springframework.org/schema/oxm http://www.springframework.org/schema/oxm/spring-oxm.xsd">
+ 
+	<!--  DispatcherServlet Context: defines this servlet's request-processing infrastructure 
+	<context:component-scan base-package="com.gap.corporate.rwy" />
+	 -->   
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<mvc:annotation-driven />
+	<context:component-scan base-package="com.grabIt" />
+	
+	<import resource="classpath:/db.xml"/>
+	<import resource="classpath:/mail.xml"/>
+	
+	
+  <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+	  <property name="viewResolvers">
+	    <list>
+	      <bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+	        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+	        <property name="prefix" value="/WEB-INF/views/"/>
+	        <property name="suffix" value=".jsp"/>
+	      </bean>
+	    </list>
+	  </property>
+	  <property name="defaultViews">
+	    <list>
+	      <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
+	    </list>
+	  </property>
+	</bean>
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>classpath:/application.properties</value>
+		</property>
+	</bean> 
+</beans>

@@ -120,6 +120,10 @@ categoryLogoLeft:hover {
   background-repeat: no-repeat;
   height: 156px;
 }
+.spaceBetweenButton{
+  margin-top:12px;
+  display:block;
+}
 /*.input-field label {
      color: #ef6c00;
    }

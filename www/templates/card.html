@@ -13,11 +13,15 @@
       <div class="contactDetails">
             <p>Contact Details</p>
             <p><label>Contact Name</label> : {{data.contactName}} </p>
-            <p><label>Contact Email Id</label> : {{data.emailId}} </p>
+            <p><label>Contact Email Id</label> : {{data.contactEmail}} </p>
             <p><label>Contact Number</label> : {{data.contactNumber}} </p>
 
       </div>
+
     </div>
+      <a ng-show="throughMypostScreen" class="waves-effect waves-light btn" ng-click="editPost()">Edit Post</a>
+      <span class="spaceBetweenButton"></span>
+      <a ng-show="throughMypostScreen" class="waves-effect waves-light btn" ng-click="deletePost()">Delete Post</a>
     <div class="card-reveal">
       <span class="card-title grey-text text-darken-4">{{data.title}}<i class="material-icons right">close</i></span>
       <div class="row">

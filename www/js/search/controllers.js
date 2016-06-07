@@ -2,6 +2,7 @@ angular.module('starter.searchController', ['ngResource'])
 
 .controller('SearchCtrl',['$scope','$parse','$resource','$ionicPopup','$state','$stateParams', function($scope,$parse,$resource,$ionicPopup,$state,$stateParams ) {
 console.log("search controller...");
+  localStorage.mypost=false;
 $('#categoryId').val("0");
 $('#subcategoryId').val("0");
 $('#search').val("");
@@ -112,7 +113,12 @@ console.log($stateParams);
 
 $('#cardImg').attr("src","/img/maruti.jpg");
 
-console.log("in card contrl..")
+console.log("in card contrl..");
+  if(localStorage.mypost=="true"){
+    $scope.throughMypostScreen= true;
+  }else{
+    $scope.throughMypostScreen = false;
+  }
 
     var card = $resource(baseUrl()+'post/:id', {id: $stateParams.id}, {
     'get': {method: 'GET'}
@@ -133,4 +139,12 @@ console.log("in card contrl..")
 
       console.log(error);
     });
+
+  $scope.editPost = function(){
+    sessionStorage.setItem("data",JSON.stringify($scope.data));
+
+    $state.go("app.post");
+  }
 }])
+
+

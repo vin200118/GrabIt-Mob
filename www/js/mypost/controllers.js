@@ -2,7 +2,7 @@ angular.module('starter.MyPostController', ['ngResource'])
 
 .controller('MyPostCtrl',['$scope','$parse','$resource','$ionicPopup','$state','$stateParams', function($scope,$parse,$resource,$ionicPopup,$state,$stateParams ) {
 console.log("mypost controller...");
-
+  localStorage.mypost=true;
 console.log($stateParams);
   if(localStorage.id != undefined){
     $scope.userId = localStorage.id;
@@ -51,29 +51,4 @@ console.log($stateParams);
       searchField();
   });
 
-}]).controller('SearchCardCtrl',['$scope','$parse','$resource','$ionicPopup','$state','$stateParams', function($scope,$parse,$resource,$ionicPopup,$state,$stateParams ) {
-
-$('#cardImg').attr("src","/img/maruti.jpg");
-
-console.log("in card contrl..")
-
-    var card = $resource(baseUrl()+'post/:id', {id: $stateParams.id}, {
-    'get': {method: 'GET'}
-    });
-
-    card.get()
-    .$promise.then(function (response) {
-    console.log(JSON.stringify(response));
-        var data=JSON.parse(JSON.stringify(response));
-        $scope.data= data;
-        if(data.condition == "U"){
-            data.condition="Used";
-        }else if(data.condition == "N"){
-              data.condition="New"
-        }
-
-    }, function (error) {
-
-      console.log(error);
-    });
 }])
