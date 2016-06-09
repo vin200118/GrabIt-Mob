@@ -1,8 +1,8 @@
 <ion-view view-title="Add Post" name="add_post" >
 
   <ion-content>
-    <!--  <img ng-show="data.image !== undefined" ng-src="{{data.image}}" class="cameraPostImg">-->
-    <img src="http://res.cloudinary.com/vinayak118/image/upload/v1462202990/macp8yxcudtiybacdjan.jpg" class="cameraPostImg">
+    <img ng-show="data.image !== undefined" ng-src="{{data.image}}" class="cameraPostImg">
+    <!--<img src="http://res.cloudinary.com/vinayak118/image/upload/v1462202990/macp8yxcudtiybacdjan.jpg" class="cameraPostImg">-->
 
     <div class="row">
        <form class="col s12">
@@ -12,7 +12,7 @@
         <select ng-model="data.selectCategory" id="selectCategory">
           <option value="" disabled selected>Choose your option</option>
         </select>
-        <label>Category</label>
+        <label id="categoryLabel">Category</label>
       </div>
       </div>
 
@@ -22,7 +22,7 @@
      <select ng-model="data.subCategory" id="subCategory">
        <option value="" disabled selected>Choose your option</option>
      </select>
-     <label>Sub Category</label>
+     <label id="subcategoryLabel">Sub Category</label>
    </div>
    </div>
 
@@ -116,7 +116,7 @@
                </div>
    </div>
    </div>
-   <a class="waves-effect waves-light btn" ng-click="submitPost()">Submit Post</a>
+   <a id="submitPostBtn" class="waves-effect waves-light btn" ng-click="submitPost()">Submit Post</a>
 </form>
       </div>
 

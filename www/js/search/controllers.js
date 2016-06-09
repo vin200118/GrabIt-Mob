@@ -109,7 +109,7 @@ console.log($stateParams);
       searchField();
   });
 
-}]).controller('SearchCardCtrl',['$scope','$parse','$resource','$ionicPopup','$state','$stateParams', function($scope,$parse,$resource,$ionicPopup,$state,$stateParams ) {
+}]).controller('SearchCardCtrl',['$scope','$parse','$resource','$ionicPopup','$state','$stateParams','$window', function($scope,$parse,$resource,$ionicPopup,$state,$stateParams,$window ) {
 
 $('#cardImg').attr("src","/img/maruti.jpg");
 
@@ -142,8 +142,32 @@ console.log("in card contrl..");
 
   $scope.editPost = function(){
     sessionStorage.setItem("data",JSON.stringify($scope.data));
+    $window.location.href="#/app/add-post";
+    //$state.go("app.post");
+  }
 
-    $state.go("app.post");
+  $scope.deletePost = function(){
+
+    console.log("delete post...");
+    var Post = $resource(baseUrl()+'post/:id',{id:$stateParams.id},{
+      'delete' : { method:'DELETE'}
+    });
+
+    Post.delete(function(response) {
+        if(response != undefined && response.statusCode == "200"){
+          console.log("post created...");
+          showMessage('<span>'+response.message+'</span>');
+          $window.location.href="#/app/mypost/"+$scope.data.userId;
+          //  $state.go("search");
+        }
+      }, function(error) {
+
+        console.log(error);
+      });
+
+
+
+    //$state.go("app.post");
   }
 }])
 

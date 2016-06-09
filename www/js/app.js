@@ -32,6 +32,7 @@ angular.module('starter', ['ionic','starter.controllers','starter.homeController
   $stateProvider
     .state('app', {
       url: '/app',
+      cache: false,
       abstract: true,
       templateUrl: 'templates/menu.html',
       controller: 'SideBarCtrl'
@@ -39,7 +40,7 @@ angular.module('starter', ['ionic','starter.controllers','starter.homeController
 
   .state('login', {
        url: '/login',
-
+       cache: false,
        templateUrl: 'templates/login.html',
        controller: 'LoginCtrl',
        params:{'message': null}
@@ -47,6 +48,7 @@ angular.module('starter', ['ionic','starter.controllers','starter.homeController
 
    .state('app.home', {
         url: '/home',
+        cache: false,
      views: {
        'menuContent': {
          templateUrl: 'templates/home.html',
@@ -57,6 +59,7 @@ angular.module('starter', ['ionic','starter.controllers','starter.homeController
 
     .state('forgotPassword', {
       url: '/forgot-password',
+      cache: false,
       templateUrl: 'templates/forgot_password.html',
       controller: 'ForgotPasswordCtrl'
 
@@ -64,6 +67,7 @@ angular.module('starter', ['ionic','starter.controllers','starter.homeController
 
     .state('app.post', {
       url: '/add-post',
+      cache: false,
       views: {
         'menuContent': {
           templateUrl: 'templates/add_post.html',
@@ -75,6 +79,7 @@ angular.module('starter', ['ionic','starter.controllers','starter.homeController
 
     .state('app.search', {
          url: '/search/:categoryId',
+      cache: false,
       views: {
         'menuContent': {
           templateUrl: 'templates/search.html',
@@ -85,6 +90,7 @@ angular.module('starter', ['ionic','starter.controllers','starter.homeController
 
      .state('app.card', {
           url: '/card/:id',
+       cache: false,
        views: {
          'menuContent': {
            templateUrl: 'templates/card.html',
@@ -95,6 +101,7 @@ angular.module('starter', ['ionic','starter.controllers','starter.homeController
 
     .state('app.mypost', {
       url: '/mypost/:id',
+      cache: false,
       views: {
         'menuContent': {
           templateUrl: 'templates/mypost.html',

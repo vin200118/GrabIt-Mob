@@ -124,6 +124,10 @@ categoryLogoLeft:hover {
   margin-top:12px;
   display:block;
 }
+
+.dropdownCss{
+  margin-top: 38px;
+}
 /*.input-field label {
      color: #ef6c00;
    }
